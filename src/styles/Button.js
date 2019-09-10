@@ -10,12 +10,12 @@ export const ButtonLink = styled.button`
   transition: all 250ms;
 
   &:hover {
-    color: #e68122;
+    color: #f598a4;
     opacity: 0.8;
   }
 
   &:active {
-    color: #e68122;
+    color: #f598a4;
     opacity: 1;
   }
 `;
@@ -36,5 +36,24 @@ export const ButtonAdd = styled.button`
 
   &:active {
     background: #c57a83;
+  }
+`;
+
+export const ButtonCheckout = styled.button`
+  background: #085caa;
+  border: 0;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 16px;
+  transition: all 250ms;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    background: #063f75;
   }
 `;

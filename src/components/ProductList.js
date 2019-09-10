@@ -1,4 +1,6 @@
 import React, { useEffect, useState, createRef } from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -57,6 +59,12 @@ function ProductList(props) {
     </ProductListStyle>
   );
 }
+
+ProductList.propTypes = {
+  getProducts: PropTypes.func.isRequired,
+  products: PropTypes.arrayOf(PropTypes.any),
+  totalItems: PropTypes.number
+};
 
 const mapStateToProps = states => ({
   products: states.productList.products,

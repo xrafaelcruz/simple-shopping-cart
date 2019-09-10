@@ -1,6 +1,6 @@
 // Action Types
 export const Types = {
-  SET_NEW_URL: 'toast/SET_NEW_URL'
+  SET_NEW_URL: 'route/SET_NEW_URL'
 };
 
 // Action Creators

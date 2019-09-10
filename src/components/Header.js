@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -44,10 +46,17 @@ function Header(props) {
   );
 }
 
+Header.propTypes = {
+  showMiniCart: PropTypes.bool,
+  showBackOption: PropTypes.bool,
+  setNewUrl: PropTypes.func.isRequired
+};
+
 const mapStateToProps = states => ({
   showMiniCart: states.header.showMiniCart,
   showBackOption: states.header.showBackOption
 });
+
 const mapDispatchToProps = dispatch => bindActionCreators({ setNewUrl }, dispatch);
 
 export default connect(

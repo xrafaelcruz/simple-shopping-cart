@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -26,6 +28,11 @@ function ProductCard(props) {
     </CardStyle>
   );
 }
+
+ProductCard.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+  product: PropTypes.shape()
+};
 
 const mapDispatchToProps = dispatch => bindActionCreators({ addToCart }, dispatch);
 

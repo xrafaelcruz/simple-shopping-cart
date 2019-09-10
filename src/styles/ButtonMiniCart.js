@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export default styled.div``;
+export default styled.div`
+  position: relative;
+`;
 
 export const Circle = styled.div`
   align-items: center;

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 import ModalStyle, { ModalWrapper, ButtonClose } from 'styles/Modal';
 
@@ -16,5 +17,9 @@ function Modal(props) {
     document.getElementById('modal')
   );
 }
+
+Modal.propTypes = {
+  closeEvent: PropTypes.func.isRequired
+};
 
 export default Modal;
