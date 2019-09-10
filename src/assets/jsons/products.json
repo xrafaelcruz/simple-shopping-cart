@@ -1,0 +1,42 @@
+[
+  {
+    "id": 0,
+    "idCategory": 1,
+    "name": "Chocolate garoto",
+    "description": "Chocolate branco negresco",
+    "price": 5.0,
+    "image": "static/images/tablete-garoto-chocolate-branco-negresco.png"
+  },
+  {
+    "id": 1,
+    "idCategory": 0,
+    "name": "Coca-cola lata",
+    "description": "coca-cola lata 350ml",
+    "price": 4,
+    "image": "static/images/coca-cola-lata.png"
+  },
+  {
+    "id": 2,
+    "idCategory": 0,
+    "name": "Fanta lata",
+    "description": "Fanta lata 350ml",
+    "price": 4,
+    "image": "static/images/fanta.png"
+  },
+  {
+    "id": 3,
+    "idCategory": 2,
+    "name": "Cheetos",
+    "description": "Sabor Parmesão 140g",
+    "price": 3.5,
+    "image": "static/images/cheetos.png"
+  },
+  {
+    "id": 4,
+    "idCategory": 2,
+    "name": "Cebolitos",
+    "description": "Assado feito de milho 60g",
+    "price": 2.75,
+    "image": "static/images/cebolitos.png"
+  }
+]
