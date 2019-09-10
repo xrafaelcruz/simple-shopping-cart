@@ -6,6 +6,10 @@ const common = css`
   cursor: pointer;
   font-size: 14px;
   transition: all 250ms;
+
+  @media (max-width: 540px) {
+    font-size: 16px;
+  }
 `;
 
 export const ButtonLink = styled.button`

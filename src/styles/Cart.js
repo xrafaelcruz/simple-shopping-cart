@@ -7,6 +7,10 @@ export default styled.div`
   margin: 0 auto 32px;
   width: 100%;
   z-index: 10;
+
+  @media (max-width: 540px) {
+    align-items: center;
+  }
 `;
 
 export const List = styled.ul`
@@ -26,8 +30,19 @@ export const ListItem = styled.li`
   height: 67px;
   padding: 8px 32px;
 
+  @media (max-width: 540px) {
+    flex-direction: column;
+    height: 270px;
+    padding: 32px;
+    justify-content: center;
+  }
+
   &:last-of-type {
     border-bottom: 0;
+
+    @media (max-width: 540px) {
+      height: 50px;
+    }
   }
 
   img {
@@ -42,6 +57,12 @@ export const WrapperImg = styled.div`
   justify-content: center;
   margin: 0 16px 0 0;
   width: 40px;
+
+  @media (max-width: 540px) {
+    height: 100px;
+    margin: auto;
+    width: 100%;
+  }
 `;
 
 export const Detail = styled.span`
@@ -56,6 +77,10 @@ export const ButtonsWrapper = styled.div`
   justify-content: center;
   margin: 0 40px 0 0;
 
+  @media (max-width: 540px) {
+    margin: 16px auto;
+  }
+
   > * {
     margin: 5px;
   }
@@ -65,4 +90,8 @@ export const Block = styled.div`
   align-items: center;
   display: flex;
   height: 100%;
+
+  @media (max-width: 540px) {
+    flex-direction: column;
+  }
 `;
