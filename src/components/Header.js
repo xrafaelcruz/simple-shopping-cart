@@ -22,15 +22,14 @@ function Header(props) {
     props.setNewUrl('/');
   }
 
-  const classButtonBack = props.showBackOption ? ' enable' : ' disable';
-  const classButtonMiniCart = props.showMiniCart ? ' enable' : ' disable';
-
   return (
     <HeaderStyle data-component="header">
       <Item x="flex-start">
-        <ButtonLink onClick={back} className={classButtonBack}>
-          <i className="fas fa-chevron-left"></i>
-        </ButtonLink>
+        {props.showBackOption && (
+          <ButtonLink onClick={back} className="fade-in">
+            <i className="fas fa-chevron-left"></i>
+          </ButtonLink>
+        )}
       </Item>
 
       <Item x="center">
@@ -39,9 +38,7 @@ function Header(props) {
         </ButtonLink>
       </Item>
 
-      <Item x="flex-end">
-        <ButtonMiniCart className={classButtonMiniCart} />
-      </Item>
+      <Item x="flex-end">{props.showMiniCart && <ButtonMiniCart />}</Item>
     </HeaderStyle>
   );
 }

@@ -16,29 +16,12 @@ export default styled.div`
 `;
 
 export const ModalWrapper = styled.div`
+  align-items: center;
   background: #fff;
   border-radius: 4px;
-  padding: 32px;
+  display: flex;
+  flex-flow: column;
+  padding: 32px 64px;
   position: relative;
   max-width: 90%;
-`;
-
-export const ButtonClose = styled.button`
-  border: 0;
-  cursor: pointer;
-  opacity: 0.8;
-  padding: 0;
-  position: absolute;
-  right: 8px;
-  top: 8px;
-  transition: all 0.5s;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  i {
-    color: #b55353;
-    font-size: 24px;
-  }
 `;

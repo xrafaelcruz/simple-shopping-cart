@@ -13,45 +13,52 @@ function MiniCart(props) {
   return (
     <MiniCartStyle data-component="mini-cart">
       <List>
-        {props.productGroup.length > 0 &&
-          props.productGroup.map((group, i) => {
+        {props.products.length > 0 &&
+          props.products.map((product, i) => {
             return (
               <ListItem key={i}>
                 <WrapperImg>
-                  <img src={group[0].image} alt={group[0].name} />
+                  <img src={product.image} alt={product.name} />
                 </WrapperImg>
                 <Details>
-                  <Detail>Quantidade: {group[0].amount}</Detail>
-                  <Detail>R$ {group[0].price}</Detail>
+                  <Detail highlight>{product.name}</Detail>
+                  <Detail>Quantidade: {product.amount}</Detail>
+                  <Detail>R$ {product.price}</Detail>
                 </Details>
               </ListItem>
             );
           })}
       </List>
+
       <Details>
-        <Detail margin="0 0 8px">Total R$ {props.finalValue}</Detail>
+        <Detail highlight margin="0 0 8px">
+          Total R$ {props.finalValue}
+        </Detail>
       </Details>
-      <ButtonCheckout
-        onClick={() => {
-          props.buttonMiniCartEvent(false);
-          props.setNewUrl('/checkout');
-        }}
-      >
-        Fechar pedido
-      </ButtonCheckout>
+
+      {props.products.length > 0 && (
+        <ButtonCheckout
+          onClick={() => {
+            props.buttonMiniCartEvent(false);
+            props.setNewUrl('/checkout');
+          }}
+        >
+          Fechar pedido
+        </ButtonCheckout>
+      )}
     </MiniCartStyle>
   );
 }
 
 MiniCart.propTypes = {
-  productGroup: PropTypes.arrayOf(PropTypes.any),
+  products: PropTypes.arrayOf(PropTypes.any),
   finalValue: PropTypes.number.isRequired,
   buttonMiniCartEvent: PropTypes.func.isRequired,
   setNewUrl: PropTypes.func.isRequired
 };
 
 const mapStateToProps = states => ({
-  productGroup: states.cart.productGroup,
+  products: states.cart.products,
   finalValue: states.cart.finalValue
 });
 

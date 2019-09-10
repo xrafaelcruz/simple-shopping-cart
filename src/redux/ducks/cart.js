@@ -1,11 +1,7 @@
-import groupBy from 'assets/scripts/groupBy';
-
 // Action Types
 export const Types = {
   ADD: 'cart/ADD',
   REMOVE: 'cart/REMOVE',
-
-  CLEAR: 'cart/CLEAR',
 
   CHECKOUT: 'cart/CHECKOUT',
   CHECKOUT_RESULT: 'cart/CHECKOUT_RESULT'
@@ -13,9 +9,7 @@ export const Types = {
 
 // Action Creators
 export const addToCart = product => ({ type: Types.ADD, payload: { product } });
-export const removeFromCart = id => ({ type: Types.REMOVE, payload: { id } });
-
-export const clearCart = () => ({ type: Types.CLEAR, payload: {} });
+export const removeFromCart = product => ({ type: Types.REMOVE, payload: { product } });
 
 export const checkout = products => ({ type: Types.CHECKOUT, payload: { products } });
 export const checkoutResult = () => ({ type: Types.CHECKOUT_RESULT, payload: {} });
@@ -24,27 +18,24 @@ const productsLocalStorage = JSON.parse(localStorage.getItem('products'));
 const initProducts = productsLocalStorage || [];
 const initQuantityOfProducts = initProducts.length > 0 ? getQuantityOfProducts(initProducts) : 0;
 const initFinalValue = initProducts.length > 0 ? getFinalValue(initProducts) : 0;
-const initProductGroup = initProducts.length > 0 ? groupById(initProducts) : [];
 
 // Reducer
 const INITIAL_STATE = {
   loading: false,
   products: initProducts,
   quantityOfProducts: initQuantityOfProducts,
-  finalValue: initFinalValue,
-  productGroup: initProductGroup
+  finalValue: initFinalValue
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
   let newProducts = [...state.products];
-  let newQuantityOfProducts, finalValue, productGroup;
+  let newQuantityOfProducts, finalValue;
 
   switch (action.type) {
     case Types.ADD:
       newProducts = addProduct(newProducts, action.payload.product);
       newQuantityOfProducts = getQuantityOfProducts(newProducts);
       finalValue = getFinalValue(newProducts);
-      productGroup = groupById(newProducts);
 
       localStorage.setItem('products', JSON.stringify(newProducts));
 
@@ -52,8 +43,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         products: newProducts,
         quantityOfProducts: newQuantityOfProducts,
-        finalValue: finalValue,
-        productGroup: productGroup
+        finalValue: finalValue
       };
 
     case Types.REMOVE:
@@ -77,13 +67,14 @@ export default function reducer(state = INITIAL_STATE, action) {
       };
 
     case Types.CHECKOUT_RESULT:
-      return {
-        ...state,
-        loading: false
-      };
+      localStorage.removeItem('products');
 
-    case Types.CLEAR:
-      return INITIAL_STATE;
+      return {
+        loading: false,
+        products: [],
+        quantityOfProducts: 0,
+        finalValue: 0
+      };
 
     default:
       return state;
@@ -94,12 +85,13 @@ function addProduct(products, product, quantity = 1) {
   const thereProduct = products.filter(p => product.id === p.id);
 
   if (thereProduct[0]) {
+    const index = products.findIndex(x => x.id === product.id);
+
     thereProduct[0].amount = thereProduct[0].amount + quantity;
-    products[thereProduct[0].index] = thereProduct[0];
+    products[index] = thereProduct[0];
   } else {
     products.push({
       ...product,
-      index: products.length,
       amount: quantity
     });
   }
@@ -116,7 +108,8 @@ function removeProduct(products, product, quantity = 1) {
     if (thereProduct[0].amount === 0) {
       products = products.filter(p => product.id !== p.id);
     } else {
-      products[thereProduct[0].index] = thereProduct[0];
+      const index = products.findIndex(x => x.id === product.id);
+      products[index] = thereProduct[0];
     }
   }
 
@@ -143,8 +136,4 @@ function getQuantityOfProducts(products) {
 
     return prev + cur.amount;
   }, 0);
-}
-
-function groupById(products) {
-  return groupBy(products, 'id');
 }

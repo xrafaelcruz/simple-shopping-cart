@@ -1,13 +1,19 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const ButtonLink = styled.button`
-  background: transparent;
+const common = css`
   border: 0;
-  color: #333;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  padding: 0;
   transition: all 250ms;
+`;
+
+export const ButtonLink = styled.button`
+  ${common}
+
+  background: transparent;
+  color: #333;
+  padding: 0;
 
   &:hover {
     color: #f598a4;
@@ -21,14 +27,11 @@ export const ButtonLink = styled.button`
 `;
 
 export const ButtonAdd = styled.button`
+  ${common}
+
   background: #f598a4;
-  border: 0;
-  border-radius: 4px;
   color: #fff;
-  cursor: pointer;
-  font-size: 14px;
   padding: 8px 16px;
-  transition: all 250ms;
 
   &:hover {
     opacity: 0.8;
@@ -40,14 +43,11 @@ export const ButtonAdd = styled.button`
 `;
 
 export const ButtonCheckout = styled.button`
+  ${common}
+
   background: #085caa;
-  border: 0;
-  border-radius: 4px;
   color: #fff;
-  cursor: pointer;
-  font-size: 14px;
   padding: 8px 16px;
-  transition: all 250ms;
 
   &:hover {
     opacity: 0.8;
@@ -55,5 +55,47 @@ export const ButtonCheckout = styled.button`
 
   &:active {
     background: #063f75;
+  }
+`;
+
+export const ButtonRemove = styled.button`
+  ${common}
+
+  align-items: center;
+  background: #ce1126;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    background: #960b1a;
+  }
+`;
+
+export const ButtonSum = styled.button`
+  ${common}
+
+  align-items: center;
+  background: #57bd17;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    background: #3f8811;
   }
 `;

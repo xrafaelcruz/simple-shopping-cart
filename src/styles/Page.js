@@ -5,5 +5,13 @@ export default styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding-top: 102px;
+  padding: 102px 16px 0;
+`;
+
+export const ContentWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  width: 100%;
 `;

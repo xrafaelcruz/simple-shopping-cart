@@ -18,9 +18,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
+  .fade-in,
   [data-page],
   [data-component] {
-    animation: ${show} 1.2s;
+    animation: ${show} .8s;
   }
 
   [data-page] {
@@ -52,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
 
   strong {
     color: #333;
-    font-size: 22px;
+    font-size: 18px;
     text-transform: capitalize;
   }
 

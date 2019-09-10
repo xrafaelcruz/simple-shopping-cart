@@ -29,8 +29,8 @@ export const ListItem = styled.li`
   align-items: center;
   border-bottom: 1px solid #ddd;
   display: flex;
-  height: 50px;
-  padding: 8px 16px;
+  height: 67px;
+  padding: 8px;
 
   &:last-of-type {
     border-bottom: 0;
@@ -56,6 +56,10 @@ export const Details = styled.div`
 `;
 
 export const Detail = styled.span`
+  color: ${props => (props.highlight ? '#333' : '#999')};
   font-size: 14px;
+  font-weight: ${props => (props.highlight ? '700' : 'normal')};
   margin: ${props => (props.margin ? props.margin : 0)};
+  max-height: 18px;
+  max-width: 100%;
 `;

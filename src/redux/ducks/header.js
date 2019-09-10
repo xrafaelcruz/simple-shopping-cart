@@ -16,18 +16,20 @@ export const enableHeaderCustom = products => ({
 
 // Reducer
 const INITIAL_STATE = {
-  showMiniCart: true,
+  showMiniCart: false,
   showBackOption: false
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.DISABLE_HEADER_CUSTOM:
-      return INITIAL_STATE;
+      return {
+        showMiniCart: true,
+        showBackOption: false
+      };
 
     case Types.ENABLE_HEADER_CUSTOM:
       return {
-        ...state,
         showMiniCart: false,
         showBackOption: true
       };

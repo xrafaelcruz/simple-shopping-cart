@@ -11,7 +11,7 @@ import { setNewUrl } from 'redux/ducks/route';
 import { createBrowserHistory } from 'history';
 export const history = createBrowserHistory();
 
-function Routes({ newUrl, setNewUrl }) {
+function Routes({ newUrl, setNewUrl, products }) {
   useEffect(() => {
     if (newUrl) {
       if (newUrl === 'back') {
